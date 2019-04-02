@@ -1,0 +1,19 @@
+{
+  "name": "task-tracker",
+  "version": "1.0.0",
+  "description": "Task Tracker Vanilla JavaScript Project ",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miraEbrahim/taskTracker.git"
+  },
+  "author": "Maryam Ebrahim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miraEbrahim/taskTracker/issues"
+  },
+  "homepage": "https://github.com/miraEbrahim/taskTracker#readme"
+}
