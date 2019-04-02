@@ -1,5 +1,5 @@
 //Fetching Task Data from Local Storage Function
-function fetchTask () {
+function fetchTasks () {
     var tasks = JSON.parse(localStorage.getItem('tasks')); //retrive tasks from local storage and parse string results into JSON object
     var tasksList = document.getElementById('tasksList'); //retrive the reference to div with id tasksList
         tasksList.innerHTML = ''; //access div id tasksList's content by property innerHTML and set it to an empty string
@@ -17,8 +17,8 @@ function fetchTask () {
                                     '<h3>' + desc + '</h3>' +
                                     '<p><span class="glyphicon glyphicon-time"></span> ' + priority +
                                     '<span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>' +
-                                    '<a href="#" class="btn btn-warning" onclick="setStatusClosed(\''+id+'\')">Close</a> ' +
-                                    '<a href="#" class="btn btn-danger" onclick="deleteTask(\''+id+'\')">Delete</a>' +
+                                    '<a href="#" class="btn btn-warning" onclick="setStatusClosed(\''+id+'\')">Close</a> ' + // Close button to set the task statu to closed and attaching the click event to the event handler method setStatusClosed
+                                    '<a href="#" class="btn btn-danger" onclick="deleteTask(\''+id+'\')">Delete</a>' + //delete the current task item from local storage by bounding the click event to deletetask event handler function
                                     '</div>';
         }
 }
@@ -59,4 +59,32 @@ function saveTasks (e) {
     fetchTasks();//call it again to make sure the list output is re-generated and the new task item will be visible
 
     e.preventDefault();//execute it to avoid the default submission of the form is taking place
+}
+
+//Implementation of the setStatusClosed method function
+function setStatusClosed (id) { //pass the current task id as a parameter
+    var tasks = JSON.parse(localStorage.getItem('tasks')); //retrive the task items in JSON format and passing the result to JSON.parse() method
+
+    for (var i; i < tasks.length; i++) {
+        if (tasks[i].id == id) {
+            tasks[i].status = "Closed";
+        }
+    }
+    localStorage.setItem('tasks', JSON.stringify(tasks)); //store the tasks items in tasks
+
+    fetchTasks(); //Update the list output
+}
+
+//Implementation of the deleteTask event handler function
+function deleteTask (id) { //pass the current task id as a parameter
+    var tasks = JSON.parse(localStorage.getItem('tasks')); //retrive the task items in JSON format and passing the result yo JSON.parse() method
+
+    for (var i; i < tasks.length; i++) {
+        if (tasks[i].id == id) {
+            tasks.splice(i, 1); //use splice method to delete the current item from the array tasks
+        }
+    }
+    localStorage.setItem('tasks', JSON.stringify(tasks)); //store the tasks items in tasks
+
+    fetchTasks(); //Update the list output
 }
