@@ -15,8 +15,55 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
         crossorigin="anonymous">
 </head>
-<body>
-    
+<body onload="fetchTasks()"> <!-- fetchTasks() event handler to be called each time the application loads  -->
+    <div class="container">
+        <h1>Task Tracker</h1>
+        <!-- Task input form section start -->
+        <div class="jumbotron">
+            <h3> add New Task</h3>
+            <form id="taskInputForm"> 
+                <div class="form-group">
+                    <lable for="taskDescInput">Description</lable>
+                    <input 
+                    type="text" 
+                    class="form-control"
+                    id="taskDescInput"
+                    placeholder="Describe the task">
+                </div>
+                <div class="form-group">
+                    <lable for="taskPriInput"></lable>
+                    <select class="form-control" id="taskPriInput">
+                        <option value="Low">low</option>
+                        <option value="Medium">medium</option>
+                        <option value="High">high</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskAssignToInput">Assigned To</label>
+                    <input 
+                        type="text" 
+                        class="form-control"
+                        id="taskAssignToInput"
+                        placeholder="Enter resposible">
+                </div>
+                <button type="submit" class="btn btn-ptimary">Add</button>
+            </form>
+        </div> 
+        <!-- Task input form section ends -->
+        <!-- Tasks list section start -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="taskList"> <!-- the id taskList generates the needed html and javascript code then place the result within this div -->
+                </div>
+            </div>
+        </div>
+        <!-- Task list section ends -->
+        <!-- Footer section start -->
+        <div class="footer">
+            <p>&copy http://miraebrahim.github.io</p>
+        </div>
+        <!-- Footer section ends -->
+    </div>
     <!-- jQuery CDN -->
     <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
